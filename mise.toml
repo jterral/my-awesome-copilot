@@ -2,7 +2,9 @@
 PROJECT_NAME = "my-awesome-copilot"
 
 [tools]
-gitversion = "5.12.0"
+gitversion = { version = "6.5.1" }
+pre-commit = { version = "4.5" }
+python = { version = "3.14" }
 
 [tasks.info]
 description = "Print project information"
@@ -18,6 +20,8 @@ echo "  Package version   : $PACKAGE_VERSION"
 echo ""
 echo "  Tooling"
 echo "  ───────"
-echo "  GitVersion        : $(gitversion -version)"
+echo "  gitversion        : $(gitversion -version)"
+echo "  python            : $(python --version | awk '{print $2}')"
+echo "  pre-commit        : $(pre-commit --version | awk '{print $2}')"
 echo ""
 '''
