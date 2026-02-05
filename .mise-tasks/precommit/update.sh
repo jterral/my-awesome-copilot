@@ -7,4 +7,3 @@ set -e
 echo "🔄 Updating pre-commit hooks..."
 
 pre-commit autoupdate
-
