@@ -3,7 +3,7 @@ name: sync-github-awesome-copilot
 on:
   workflow_dispatch:
   schedule:
-    - cron: "0 3 * * 1" # Every Monday at 03:00 UTC
+    - cron: "0 3 * * 1"
 
 jobs:
   sync:
@@ -20,20 +20,9 @@ jobs:
         run: |
           cp ./github-awesome-copilot/instructions/agent-skills.instructions.md ./synced/github-awesome-copilot/instructions/agent-skills.instructions.md
           cp ./github-awesome-copilot/instructions/agents.instructions.md ./synced/github-awesome-copilot/instructions/agents.instructions.md
-          cp ./github-awesome-copilot/instructions/ai-prompt-engineering-safety-best-practices.instructions.md ./synced/github-awesome-copilot/instructions/ai-prompt-engineering-safety-best-practices.instructions.md
-          cp ./github-awesome-copilot/instructions/aspnet-rest-apis.instructions.md ./synced/github-awesome-copilot/instructions/aspnet-rest-apis.instructions.md
-          cp ./github-awesome-copilot/instructions/astro.instructions.md ./synced/github-awesome-copilot/instructions/astro.instructions.md
           cp ./github-awesome-copilot/instructions/code-review-generic.instructions.md ./synced/github-awesome-copilot/instructions/code-review-generic.instructions.md
-          cp ./github-awesome-copilot/instructions/copilot-sdk-csharp.instructions.md ./synced/github-awesome-copilot/instructions/copilot-sdk-csharp.instructions.md
-          cp ./github-awesome-copilot/instructions/csharp-mcp-server.instructions.md ./synced/github-awesome-copilot/instructions/csharp-mcp-server.instructions.md
-          cp ./github-awesome-copilot/instructions/csharp.instructions.md ./synced/github-awesome-copilot/instructions/csharp.instructions.md
-          cp ./github-awesome-copilot/instructions/dart-n-flutter.instructions.md ./synced/github-awesome-copilot/instructions/dart-n-flutter.instructions.md
           cp ./github-awesome-copilot/instructions/instructions.instructions.md ./synced/github-awesome-copilot/instructions/instructions.instructions.md
-          cp ./github-awesome-copilot/instructions/markdown.instructions.md ./synced/github-awesome-copilot/instructions/markdown.instructions.md
-          cp ./github-awesome-copilot/instructions/playwright-dotnet.instructions.md ./synced/github-awesome-copilot/instructions/playwright-dotnet.instructions.md
-          cp ./github-awesome-copilot/instructions/rust-mcp-server.instructions.md ./synced/github-awesome-copilot/instructions/rust-mcp-server.instructions.md
-          cp ./github-awesome-copilot/instructions/rust.instructions.md ./synced/github-awesome-copilot/instructions/rust.instructions.md
-          cp ./github-awesome-copilot/instructions/terraform.instructions.md ./synced/github-awesome-copilot/instructions/terraform.instructions.md
+          cp ./github-awesome-copilot/instructions/prompt.instructions.md ./synced/github-awesome-copilot/instructions/prompt.instructions.md
 
       - uses: peter-evans/create-pull-request@v8
         with:
