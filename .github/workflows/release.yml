@@ -1,0 +1,34 @@
+name: release
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+
+      - uses: jdx/mise-action@v3
+        with:
+          install_args: "gitversion@6.5.1"
+
+      - id: generate-tag
+        run: |
+          release_tag=$(gitversion -showvariable SemVer)
+          echo "RELEASE_TAG=$release_tag" >> $GITHUB_ENV
+          echo "Generated release tag: $release_tag"
+
+      - id: push-tag
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git tag $RELEASE_TAG
+          git push origin $RELEASE_TAG

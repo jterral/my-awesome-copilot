@@ -1,0 +1,27 @@
+[env]
+PROJECT_NAME = "my-awesome-copilot"
+
+[tools]
+gitversion = { version = "6.5.1" }
+pre-commit = { version = "4.5" }
+python = { version = "3.14" }
+
+[tasks.info]
+description = "Print project information"
+quiet = true
+run = '''
+echo ""
+echo "──────────────────────────────────────────────"
+echo "  📦 Project information"
+echo "──────────────────────────────────────────────"
+echo ""
+echo "  Project           : $PROJECT_NAME"
+echo "  Package version   : $PACKAGE_VERSION"
+echo ""
+echo "  Tooling"
+echo "  ───────"
+echo "  gitversion        : $(gitversion -version)"
+echo "  python            : $(python --version | awk '{print $2}')"
+echo "  pre-commit        : $(pre-commit --version | awk '{print $2}')"
+echo ""
+'''
