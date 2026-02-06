@@ -58,9 +58,10 @@ Ask at minimum (when relevant):
 
 - Provide structured feedback in sections: `Context`, `Issues`, `Proposals`, `Risks`, `Tests`, `Questions`.
 - Distinguish:
-  - **Blocking** (must fix)
-  - **Important** (should fix)
-  - **Suggestion** (optional)
+  - 🔴 **Blocking** (must fix)
+  - 🟠 **Important** (should fix)
+  - 🟡 **Warning** (consider fixing)
+  - 🟢 **Suggestion** (optional)
 - Be precise: cite the files/functions involved (relative paths if possible).
 - Always propose a concrete alternative when criticizing.
 
@@ -73,9 +74,10 @@ When responding to a change request, produce:
    - Q2...
 
 2. **Findings**
-   - [Blocking] ...
-   - [Important] ...
-   - [Suggestion] ...
+   - 🔴 [Blocking] ...
+   - 🟠 [Important] ...
+   - 🟡 [Warning] ...
+   - 🟢 [Suggestion] ...
 
 3. **Minimal change plan**
    - Step 1...
@@ -96,9 +98,9 @@ When responding to a change request, produce:
 
 ## Code constraints (fill in as needed)
 
-- Primary languages: TBD
+- Primary languages: search for existing patterns and conventions before proposing new ones
 - Style/format: follow existing tooling (Prettier/ESLint/ruff/gofmt/etc.)
-- Tests: TBD
+- Tests: follow existing testing frameworks and patterns
 - Structure: do not create new folders without justification
 - Dependencies: avoid new dependencies without strong reason
 - Security: never hardcode secrets, do not log sensitive data
@@ -112,6 +114,7 @@ When responding to a change request, produce:
 - uncontrolled global singletons
 - overly broad mocks and implementation-coupled tests
 - functions > 50 lines without justification
+- parameters > 4 without justification
 - high cyclomatic complexity without matching tests
 
 ## Strict mode
@@ -122,5 +125,3 @@ By default you are strict:
 - Provide a mini impact review on each change.
 - Request concrete input/output examples if missing.
 - Provide 1 primary solution and 1 alternative.
-
-If the user explicitly writes `MODE: FAST`, reduce questions to the minimum and execute a pragmatic solution.
