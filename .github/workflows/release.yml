@@ -1,6 +1,7 @@
 name: release
 
 on:
+  workflow_dispatch:
   push:
     branches:
       - main
@@ -16,19 +17,19 @@ jobs:
         with:
           fetch-depth: 0
 
-      - uses: jdx/mise-action@v3
+      - uses: gittools/actions/gitversion/setup@v4.2.0
         with:
-          install_args: "gitversion@6.5.1"
+          versionSpec: "6.5.1"
 
-      - id: generate-tag
-        run: |
-          release_tag=$(gitversion -showvariable SemVer)
-          echo "RELEASE_TAG=$release_tag" >> $GITHUB_ENV
-          echo "Generated release tag: $release_tag"
+      - id: version_step
+        uses: gittools/actions/gitversion/execute@v4.2.0
 
-      - id: push-tag
-        run: |
+      - run: |
+          echo "FullSemVer (steps.version_step.outputs.fullSemVer)            : ${{ steps.version_step.outputs.fullSemVer }}"
+          echo "FullSemVer (steps.version_step.outputs.GitVersion_FullSemVer) : ${{ steps.version_step.outputs.GitVersion_FullSemVer }}"
+
+      - run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git tag $RELEASE_TAG
-          git push origin $RELEASE_TAG
+          git tag "v${{ steps.version_step.outputs.GitVersion_FullSemVer }}"
+          git push origin "v${{ steps.version_step.outputs.GitVersion_FullSemVer }}"
