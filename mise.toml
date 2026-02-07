@@ -15,12 +15,12 @@ includes = [".mise-shared-tasks"]
 [tasks.download-shared-tasks]
 description = "Download shared tasks"
 hide = true
-file = "git::ssh://git@github.com/jterral/my-mise-tasks.git//shared-tasks/download-tasks?ref=feature/init-project"
+file = "git::ssh://git@github.com/jterral/my-mise-tasks.git//shared-tasks/download-tasks?ref=main"
 
 [tasks.apply-shared-tasks]
 description = "📩 Download shared tasks in the current workspace"
 wait_for = "download-shared-tasks"
-run = "mise download-shared-tasks --directory .mise-shared-tasks feature/init-project precommit"
+run = "mise download-shared-tasks --directory .mise-shared-tasks main precommit"
 
 [tasks.info]
 description = "Print project information"
